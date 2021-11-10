@@ -1,0 +1,43 @@
+cod_icone: "36"
+
+cod_temp_max_tende_icone: "11"
+
+cod_temp_min_tende_icone: "74"
+
+dia_semana: "Quarta-Feira"
+
+dir_vento: "SE-E"
+
+entidade: "Santos"
+
+estacao: "Primavera"
+
+fonte: "prevmet"
+
+hora: "20"
+
+icone: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFo
+
+int_vento: "Fracos"
+
+nascer: "05h15"
+
+ocaso: "18h25"
+
+resumo: "Muitas nuvens com possibilidade de chuva isolada"
+
+temp_max: 26
+
+temp_max_tende: "Ligeira Elevação"
+
+temp_min: 16
+
+temp_min_tende: "Estável"
+
+tempo: ""
+
+uf: "SP"
+
+umidade_max: 95
+
+umidade_min: 60

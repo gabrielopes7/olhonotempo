@@ -47,4 +47,35 @@ input[type="button"]{
     width: 150px;
     padding: 10px;
     border: none;
+    cursor: pointer;
+}
+
+section{
+    display: grid;
+    width: 70%;
+    margin: auto;
+    margin-top: 40px;
+    grid-template: auto / 2fr 1fr;
+    justify-items: center;
+    gap: 25px;
+
+}
+
+#previsaoHoje{
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+    height: 300px;
+    text-align: center;
+    
+}
+
+#previsaoProximos{
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+    height: 500px;
+    text-align: center;
 }

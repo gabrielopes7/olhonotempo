@@ -2,9 +2,12 @@ let url1 =
   "https://servicodados.ibge.gov.br/api/v1/localidades/municipios?orderBy=nome";
 let data = new Date();
 
-let dataHoje = `${("00" + data.getDate()).slice(-2)}/${
-  data.getMonth() + 1
-}/${data.getFullYear()}`;
+let dataHoje = `${("00" + data.getDate()).slice(-2)}/${data.getMonth() + 1}/${data.getFullYear()}`;
+
+let dataAmanha = `${("00" + (data.getDate() + 1)).slice(-2)}/${ data.getMonth() + 1}/${data.getFullYear()}`;
+let dataProximoDiaUm = `${("00" + (data.getDate() + 2)).slice(-2)}/${ data.getMonth() + 1}/${data.getFullYear()}`;
+let dataProximoDiaDois  = `${("00" + (data.getDate() + 3)).slice(-2)}/${ data.getMonth() + 1}/${data.getFullYear()}`;
+let dataProximoDiaTres  = `${("00" + (data.getDate() + 4)).slice(-2)}/${ data.getMonth() + 1}/${data.getFullYear()}`;
 
 function pegarCidade() {
   let nomeCidade = document.getElementById("nomeCidade").value;
@@ -13,12 +16,12 @@ function pegarCidade() {
     .then((res) => {
       return res.json();
     })
-    .then((data) => {
-      if (data.find((city) => city.nome == nomeCidade) == undefined) {
+    .then((dados) => {
+      if (dados.find((city) => city.nome == nomeCidade) == undefined) {
         alert("Digite corretamente o nome da cidade");
         return;
       }
-      let cidade = data.find((city) => city.nome == nomeCidade).id;
+      let cidade = dados.find((city) => city.nome == nomeCidade).id;
       cidadePrevisao(cidade);
     });
 }
@@ -29,13 +32,25 @@ function cidadePrevisao(cidade) {
     .then((res) => {
       return res.json();
     })
-    .then((data) => {
-      let hojeManha = data[cidade][`${dataHoje}`].manha;
-      let hojeTarde = data[cidade][`${dataHoje}`].tarde;
-      let hojeNoite = data[cidade][`${dataHoje}`].noite;
+    .then((dados) => {
+      let hoje = dados[cidade][`${dataHoje}`].manha;
+      let amanha = dados[cidade][`${dataAmanha}`].manha;
+      let proximoDiaUm = dados[cidade][`${dataProximoDiaUm}`];
+      let proximoDiaDois = dados[cidade][`${dataProximoDiaDois}`];
+      let proximoDiaTres = dados[cidade][`${dataProximoDiaTres}`];
 
-      console.log(data[cidade][`${dataHoje}`].manha.resumo); // Preciso agora transformar em uma função que mostrará no HTML
+      divHoje(hoje, amanha);
+      // divProximos();
+
     });
 }
 
-function criarDiv() {}
+function divHoje(hoje, amanha) {
+  let previsao = document.getElementById("previsaoHoje");
+  let diaHoje = document.getElementById("diaHoje"); // Terminar a criação da div.
+
+  diaHoje.innerText += hoje.dia_semana;
+  let nomeCidade = hoje.entidade;
+  
+  console.log(hoje)
+}

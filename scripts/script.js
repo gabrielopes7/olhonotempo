@@ -1,5 +1,6 @@
 let url1 = "https://servicodados.ibge.gov.br/api/v1/localidades/municipios?orderBy=nome";
 let data = new Date();
+armazenamento();
 
 let dataHoje = `${("00" + data.getDate()).slice(-2)}/${data.getMonth() + 1}/${data.getFullYear()}`;
 
@@ -8,7 +9,55 @@ let dataProximoDiaUm = `${("00" + (data.getDate() + 2)).slice(-2)}/${ data.getMo
 let dataProximoDiaDois  = `${("00" + (data.getDate() + 3)).slice(-2)}/${ data.getMonth() + 1}/${data.getFullYear()}`;
 let dataProximoDiaTres  = `${("00" + (data.getDate() + 4)).slice(-2)}/${ data.getMonth() + 1}/${data.getFullYear()}`;
 
+if(!localStorage.getItem("dia1")){
+  let url = "https://apiprevmet3.inmet.gov.br/previsao/3550308"
+  fetch(url)
+    .then((res) => {
+      return res.json();
+    })
+    .then((dados) => {
+      let hoje = dados[3550308][dataHoje].manha;
+      let amanha = dados[3550308][`${dataAmanha}`].manha;
+      let proximoDiaUm = dados[3550308][`${dataProximoDiaUm}`];
+      let proximoDiaDois = dados[3550308][`${dataProximoDiaDois}`];
+      let proximoDiaTres = dados[3550308][`${dataProximoDiaTres}`];
 
+      let dadosClima = document.getElementsByClassName("dadosClima");
+      let dadosProximos = document.getElementsByClassName("dadosProximos");
+
+    dadosClima[0].innerText = `${hoje.dia_semana}`
+     dadosClima[1].innerText = `${hoje.entidade}`
+     dadosClima[2].innerText = `${hoje.resumo}`
+     dadosClima[3].innerText = `Temperatura máxima: ${hoje.temp_max}`
+     dadosClima[4].innerText = `Temperatura mínima: ${hoje.temp_min}`
+
+     dadosClima[5].innerText = `${amanha.dia_semana}`
+     dadosClima[6].innerText = `${amanha.entidade}`
+     dadosClima[7].innerText = `${amanha.resumo}`
+     dadosClima[8].innerText = `Temperatura máxima: ${amanha.temp_max}`
+     dadosClima[9].innerText = `Temperatura mínima: ${amanha.temp_min}`
+
+     dadosProximos[0].innerText = `${proximoDiaUm.dia_semana}`
+     dadosProximos[1].innerText = `${proximoDiaUm.entidade}`
+     dadosProximos[2].innerText = `${proximoDiaUm.resumo}`
+     dadosProximos[3].innerText = `Temperatura máxima: ${proximoDiaUm.temp_max}`
+     dadosProximos[4].innerText = `Temperatura mínima: ${proximoDiaUm.temp_min}`
+
+     dadosProximos[5].innerText = `${proximoDiaDois.dia_semana}`
+     dadosProximos[6].innerText = `${proximoDiaDois.entidade}`
+     dadosProximos[7].innerText = `${proximoDiaDois.resumo}`
+     dadosProximos[8].innerText = `Temperatura máxima: ${proximoDiaDois.temp_max}`
+     dadosProximos[9].innerText = `Temperatura mínima: ${proximoDiaDois.temp_min}`
+
+     dadosProximos[10].innerText = `${proximoDiaTres.dia_semana}`
+     dadosProximos[11].innerText = `${proximoDiaTres.entidade}`
+     dadosProximos[12].innerText = `${proximoDiaTres.resumo}`
+     dadosProximos[13].innerText = `Temperatura máxima: ${proximoDiaTres.temp_max}`
+     dadosProximos[14].innerText = `Temperatura mínima: ${proximoDiaTres.temp_min}`
+      
+
+    });
+}
 
 
 function pegarCidade() {
@@ -43,7 +92,9 @@ function cidadePrevisao(cidade) {
 
       divHoje(hoje);
       divAmanha(amanha);
-      // divProximos();
+      divProximoUm(proximoDiaUm);
+      divProximoDois(proximoDiaDois);
+      divProximoTres(proximoDiaTres);
 
     });
 }
@@ -63,6 +114,19 @@ function divHoje(hoje) {
   dadosClima[2].innerText = `${resumo}`
   dadosClima[3].innerText = `Temperatura máxima: ${temp_max}`
   dadosClima[4].innerText = `Temperatura mínima: ${temp_min}`
+
+
+  let armazenaHoje = {
+    dia: (dia_semana),
+    cidade: (entidade),
+    resumo: (resumo),
+    tempMax: (temp_max),
+    tempMin: (temp_min)
+  }
+
+
+  localStorage.setItem("dia1", JSON.stringify(armazenaHoje))
+  
   
 }
 
@@ -77,4 +141,178 @@ function divAmanha(amanha){
   dadosClima[8].innerText = `Temperatura máxima: ${temp_max}`
   dadosClima[9].innerText = `Temperatura mínima: ${temp_min}`
 
+  let armazenaAmanha ={
+    dia: (dia_semana),
+    cidade: (entidade),
+    resumo: (resumo),
+    tempMax: (temp_max),
+    tempMin: (temp_min)
+  }
+
+  localStorage.setItem("dia2", JSON.stringify(armazenaAmanha));
+
+
 }
+
+function divProximoUm(diaUm){
+  let dadosProximos = document.getElementsByClassName("dadosProximos");
+
+  let {dia_semana, entidade, resumo, temp_max, temp_min} = diaUm;
+
+  dadosProximos[0].innerText = `${dia_semana}`
+  dadosProximos[1].innerText = `${entidade}`
+  dadosProximos[2].innerText = `${resumo}`
+  dadosProximos[3].innerText = `Temperatura máxima: ${temp_max}`
+  dadosProximos[4].innerText = `Temperatura mínima: ${temp_min}`
+
+  let armazenaDiaUm ={
+    dia: (dia_semana),
+    cidade: (entidade),
+    resumo: (resumo),
+    tempMax: (temp_max),
+    tempMin: (temp_min)
+  }
+
+  localStorage.setItem("dia3", JSON.stringify(armazenaDiaUm));
+
+};
+
+function divProximoDois(diaDois){
+  let dadosProximos = document.getElementsByClassName("dadosProximos");
+
+  let {dia_semana, entidade, resumo, temp_max, temp_min} = diaDois;
+
+  dadosProximos[5].innerText = `${dia_semana}`
+  dadosProximos[6].innerText = `${entidade}`
+  dadosProximos[7].innerText = `${resumo}`
+  dadosProximos[8].innerText = `Temperatura máxima: ${temp_max}`
+  dadosProximos[9].innerText = `Temperatura mínima: ${temp_min}`
+
+  let armazenaDiaDois ={
+    dia: (dia_semana),
+    cidade: (entidade),
+    resumo: (resumo),
+    tempMax: (temp_max),
+    tempMin: (temp_min)
+  }
+
+  localStorage.setItem("dia4", JSON.stringify(armazenaDiaDois));
+
+}
+
+function divProximoTres(diaTres){
+  let dadosProximos = document.getElementsByClassName("dadosProximos");
+
+  let {dia_semana, entidade, resumo, temp_max, temp_min} = diaTres;
+
+  dadosProximos[10].innerText = `${dia_semana}`
+  dadosProximos[11].innerText = `${entidade}`
+  dadosProximos[12].innerText = `${resumo}`
+  dadosProximos[13].innerText = `Temperatura máxima: ${temp_max}`
+  dadosProximos[14].innerText = `Temperatura mínima: ${temp_min}`
+
+  let armazenaDiaTres ={
+    dia: (dia_semana),
+    cidade: (entidade),
+    resumo: (resumo),
+    tempMax: (temp_max),
+    tempMin: (temp_min)
+  }
+
+  localStorage.setItem("dia5", JSON.stringify(armazenaDiaTres));
+
+}
+
+
+function armazenamento(){
+  if(localStorage.getItem("dia1")){
+    let a = JSON.parse(localStorage.getItem("dia1"));
+    
+    
+
+    let dadosClima = document.getElementsByClassName("dadosClima");
+
+  
+    let {dia, cidade, resumo, tempMax, tempMin } = a;
+  
+  
+    dadosClima[0].innerText = `${dia}`
+    dadosClima[1].innerText = `${cidade}`
+    dadosClima[2].innerText = `${resumo}`
+    dadosClima[3].innerText = `Temperatura máxima: ${tempMax}`
+    dadosClima[4].innerText = `Temperatura mínima: ${tempMin}`
+  }
+
+  if(localStorage.getItem("dia2")){
+    let b = JSON.parse(localStorage.getItem("dia2"));
+    
+    
+
+    let dadosClima = document.getElementsByClassName("dadosClima");
+
+  
+    let {dia, cidade, resumo, tempMax, tempMin } = b;
+  
+  
+    dadosClima[5].innerText = `${dia}`
+    dadosClima[6].innerText = `${cidade}`
+    dadosClima[7].innerText = `${resumo}`
+    dadosClima[8].innerText = `Temperatura máxima: ${tempMax}`
+    dadosClima[9].innerText = `Temperatura mínima: ${tempMin}`
+  }
+
+  if(localStorage.getItem("dia3")){
+    let c = JSON.parse(localStorage.getItem("dia3"));
+    
+    
+
+    let dadosProximos = document.getElementsByClassName("dadosProximos");
+
+  
+    let {dia, cidade, resumo, tempMax, tempMin } = c;
+  
+  
+    dadosProximos[0].innerText = `${dia}`
+    dadosProximos[1].innerText = `${cidade}`
+    dadosProximos[2].innerText = `${resumo}`
+    dadosProximos[3].innerText = `Temperatura máxima: ${tempMax}`
+    dadosProximos[4].innerText = `Temperatura mínima: ${tempMin}`
+  }
+
+  if(localStorage.getItem("dia4")){
+    let d = JSON.parse(localStorage.getItem("dia4"));
+    
+    
+
+    let dadosProximos = document.getElementsByClassName("dadosProximos");
+
+  
+    let {dia, cidade, resumo, tempMax, tempMin } = d;
+  
+  
+    dadosProximos[5].innerText = `${dia}`
+    dadosProximos[6].innerText = `${cidade}`
+    dadosProximos[7].innerText = `${resumo}`
+    dadosProximos[8].innerText = `Temperatura máxima: ${tempMax}`
+    dadosProximos[9].innerText = `Temperatura mínima: ${tempMin}`
+  }
+
+  if(localStorage.getItem("dia5")){
+    let e = JSON.parse(localStorage.getItem("dia5"));
+    
+    
+
+    let dadosProximos = document.getElementsByClassName("dadosProximos");
+
+  
+    let {dia, cidade, resumo, tempMax, tempMin } = e;
+  
+  
+    dadosProximos[10].innerText = `${dia}`
+    dadosProximos[11].innerText = `${cidade}`
+    dadosProximos[12].innerText = `${resumo}`
+    dadosProximos[13].innerText = `Temperatura máxima: ${tempMax}`
+    dadosProximos[14].innerText = `Temperatura mínima: ${tempMin}`
+  }
+}
+

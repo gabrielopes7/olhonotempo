@@ -1,5 +1,4 @@
-let url1 =
-  "https://servicodados.ibge.gov.br/api/v1/localidades/municipios?orderBy=nome";
+let url1 = "https://servicodados.ibge.gov.br/api/v1/localidades/municipios?orderBy=nome";
 let data = new Date();
 
 let dataHoje = `${("00" + data.getDate()).slice(-2)}/${data.getMonth() + 1}/${data.getFullYear()}`;
@@ -8,6 +7,9 @@ let dataAmanha = `${("00" + (data.getDate() + 1)).slice(-2)}/${ data.getMonth() 
 let dataProximoDiaUm = `${("00" + (data.getDate() + 2)).slice(-2)}/${ data.getMonth() + 1}/${data.getFullYear()}`;
 let dataProximoDiaDois  = `${("00" + (data.getDate() + 3)).slice(-2)}/${ data.getMonth() + 1}/${data.getFullYear()}`;
 let dataProximoDiaTres  = `${("00" + (data.getDate() + 4)).slice(-2)}/${ data.getMonth() + 1}/${data.getFullYear()}`;
+
+
+
 
 function pegarCidade() {
   let nomeCidade = document.getElementById("nomeCidade").value;
@@ -39,18 +41,40 @@ function cidadePrevisao(cidade) {
       let proximoDiaDois = dados[cidade][`${dataProximoDiaDois}`];
       let proximoDiaTres = dados[cidade][`${dataProximoDiaTres}`];
 
-      divHoje(hoje, amanha);
+      divHoje(hoje);
+      divAmanha(amanha);
       // divProximos();
 
     });
 }
 
-function divHoje(hoje, amanha) {
-  let previsao = document.getElementById("previsaoHoje");
-  let diaHoje = document.getElementById("diaHoje"); // Terminar a criação da div.
 
-  diaHoje.innerText += hoje.dia_semana;
-  let nomeCidade = hoje.entidade;
+
+function divHoje(hoje) {
+
+  let dadosClima = document.getElementsByClassName("dadosClima");
+
   
-  console.log(hoje)
+  let {dia_semana, entidade, resumo, temp_max, temp_min } = hoje;
+
+
+  dadosClima[0].innerText = `${dia_semana}`
+  dadosClima[1].innerText = `${entidade}`
+  dadosClima[2].innerText = `${resumo}`
+  dadosClima[3].innerText = `Temperatura máxima: ${temp_max}`
+  dadosClima[4].innerText = `Temperatura mínima: ${temp_min}`
+  
+}
+
+function divAmanha(amanha){
+  let dadosClima = document.getElementsByClassName("dadosClima");
+
+  let {dia_semana, entidade, resumo, temp_max, temp_min } = amanha;
+
+  dadosClima[5].innerText = `${dia_semana}`
+  dadosClima[6].innerText = `${entidade}`
+  dadosClima[7].innerText = `${resumo}`
+  dadosClima[8].innerText = `Temperatura máxima: ${temp_max}`
+  dadosClima[9].innerText = `Temperatura mínima: ${temp_min}`
+
 }

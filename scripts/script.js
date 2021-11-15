@@ -25,7 +25,7 @@ if(!localStorage.getItem("dia1")){
       let dadosClima = document.getElementsByClassName("dadosClima");
       let dadosProximos = document.getElementsByClassName("dadosProximos");
 
-    dadosClima[0].innerText = `${hoje.dia_semana}`
+      dadosClima[0].innerText = `${hoje.dia_semana}`
      dadosClima[1].innerText = `${hoje.entidade}`
      dadosClima[2].innerText = `${hoje.resumo}`
      dadosClima[3].innerText = `Temperatura máxima: ${hoje.temp_max}`
@@ -109,7 +109,7 @@ function divHoje(hoje) {
   let {dia_semana, entidade, resumo, temp_max, temp_min } = hoje;
 
 
-  dadosClima[0].innerText = `${dia_semana}`
+  dadosClima[0].innerText = `${dia_semana} - ${dataHoje}`
   dadosClima[1].innerText = `${entidade}`
   dadosClima[2].innerText = `${resumo}`
   dadosClima[3].innerText = `Temperatura máxima: ${temp_max}`
@@ -118,6 +118,7 @@ function divHoje(hoje) {
 
   let armazenaHoje = {
     dia: (dia_semana),
+    diaData: (dataHoje),
     cidade: (entidade),
     resumo: (resumo),
     tempMax: (temp_max),
@@ -135,7 +136,7 @@ function divAmanha(amanha){
 
   let {dia_semana, entidade, resumo, temp_max, temp_min } = amanha;
 
-  dadosClima[5].innerText = `${dia_semana}`
+  dadosClima[5].innerText = `${dia_semana} - ${dataAmanha}`
   dadosClima[6].innerText = `${entidade}`
   dadosClima[7].innerText = `${resumo}`
   dadosClima[8].innerText = `Temperatura máxima: ${temp_max}`
@@ -143,6 +144,7 @@ function divAmanha(amanha){
 
   let armazenaAmanha ={
     dia: (dia_semana),
+    diaData: (dataAmanha),
     cidade: (entidade),
     resumo: (resumo),
     tempMax: (temp_max),
@@ -159,7 +161,7 @@ function divProximoUm(diaUm){
 
   let {dia_semana, entidade, resumo, temp_max, temp_min} = diaUm;
 
-  dadosProximos[0].innerText = `${dia_semana}`
+  dadosProximos[0].innerText = `${dia_semana} - ${dataProximoDiaUm}`
   dadosProximos[1].innerText = `${entidade}`
   dadosProximos[2].innerText = `${resumo}`
   dadosProximos[3].innerText = `Temperatura máxima: ${temp_max}`
@@ -167,6 +169,7 @@ function divProximoUm(diaUm){
 
   let armazenaDiaUm ={
     dia: (dia_semana),
+    diaData: (dataProximoDiaUm),
     cidade: (entidade),
     resumo: (resumo),
     tempMax: (temp_max),
@@ -182,7 +185,7 @@ function divProximoDois(diaDois){
 
   let {dia_semana, entidade, resumo, temp_max, temp_min} = diaDois;
 
-  dadosProximos[5].innerText = `${dia_semana}`
+  dadosProximos[5].innerText = `${dia_semana} - ${dataProximoDiaDois}`
   dadosProximos[6].innerText = `${entidade}`
   dadosProximos[7].innerText = `${resumo}`
   dadosProximos[8].innerText = `Temperatura máxima: ${temp_max}`
@@ -190,6 +193,7 @@ function divProximoDois(diaDois){
 
   let armazenaDiaDois ={
     dia: (dia_semana),
+    diaData: (dataProximoDiaDois),
     cidade: (entidade),
     resumo: (resumo),
     tempMax: (temp_max),
@@ -205,7 +209,7 @@ function divProximoTres(diaTres){
 
   let {dia_semana, entidade, resumo, temp_max, temp_min} = diaTres;
 
-  dadosProximos[10].innerText = `${dia_semana}`
+  dadosProximos[10].innerText = `${dia_semana} - ${dataProximoDiaTres}`
   dadosProximos[11].innerText = `${entidade}`
   dadosProximos[12].innerText = `${resumo}`
   dadosProximos[13].innerText = `Temperatura máxima: ${temp_max}`
@@ -213,6 +217,7 @@ function divProximoTres(diaTres){
 
   let armazenaDiaTres ={
     dia: (dia_semana),
+    diaData: (dataProximoDiaTres),
     cidade: (entidade),
     resumo: (resumo),
     tempMax: (temp_max),
@@ -233,10 +238,10 @@ function armazenamento(){
     let dadosClima = document.getElementsByClassName("dadosClima");
 
   
-    let {dia, cidade, resumo, tempMax, tempMin } = a;
+    let {dia, diaData, cidade, resumo, tempMax, tempMin } = a;
   
   
-    dadosClima[0].innerText = `${dia}`
+    dadosClima[0].innerText = `${dia} - ${diaData}`
     dadosClima[1].innerText = `${cidade}`
     dadosClima[2].innerText = `${resumo}`
     dadosClima[3].innerText = `Temperatura máxima: ${tempMax}`
@@ -251,10 +256,10 @@ function armazenamento(){
     let dadosClima = document.getElementsByClassName("dadosClima");
 
   
-    let {dia, cidade, resumo, tempMax, tempMin } = b;
+    let {dia, diaData, cidade, resumo, tempMax, tempMin } = b;
   
   
-    dadosClima[5].innerText = `${dia}`
+    dadosClima[5].innerText = `${dia} - ${diaData}`
     dadosClima[6].innerText = `${cidade}`
     dadosClima[7].innerText = `${resumo}`
     dadosClima[8].innerText = `Temperatura máxima: ${tempMax}`
@@ -269,10 +274,10 @@ function armazenamento(){
     let dadosProximos = document.getElementsByClassName("dadosProximos");
 
   
-    let {dia, cidade, resumo, tempMax, tempMin } = c;
+    let {dia, diaData, cidade, resumo, tempMax, tempMin } = c;
   
   
-    dadosProximos[0].innerText = `${dia}`
+    dadosProximos[0].innerText = `${dia} - ${diaData}`
     dadosProximos[1].innerText = `${cidade}`
     dadosProximos[2].innerText = `${resumo}`
     dadosProximos[3].innerText = `Temperatura máxima: ${tempMax}`
@@ -287,10 +292,10 @@ function armazenamento(){
     let dadosProximos = document.getElementsByClassName("dadosProximos");
 
   
-    let {dia, cidade, resumo, tempMax, tempMin } = d;
+    let {dia, diaData, cidade, resumo, tempMax, tempMin } = d;
   
   
-    dadosProximos[5].innerText = `${dia}`
+    dadosProximos[5].innerText = `${dia} - ${diaData}`
     dadosProximos[6].innerText = `${cidade}`
     dadosProximos[7].innerText = `${resumo}`
     dadosProximos[8].innerText = `Temperatura máxima: ${tempMax}`
@@ -305,10 +310,10 @@ function armazenamento(){
     let dadosProximos = document.getElementsByClassName("dadosProximos");
 
   
-    let {dia, cidade, resumo, tempMax, tempMin } = e;
+    let {dia, diaData, cidade, resumo, tempMax, tempMin } = e;
   
   
-    dadosProximos[10].innerText = `${dia}`
+    dadosProximos[10].innerText = `${dia} - ${diaData}`
     dadosProximos[11].innerText = `${cidade}`
     dadosProximos[12].innerText = `${resumo}`
     dadosProximos[13].innerText = `Temperatura máxima: ${tempMax}`

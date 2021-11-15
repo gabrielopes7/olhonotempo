@@ -2,6 +2,14 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
+:root{
+    --cor1: #4886D9;
+    --cor2: #57AAF2;
+    --cor3: #72B6F2;
+    --cor4: #94CEF2;
+    --cor5: #BBE8F2;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -17,7 +25,7 @@ body{
 
 .principal{
     font-family: "Bebas Neue";
-    font-size: 5rem;
+    font-size: 8rem;
     color: white;
     text-shadow: 0px 1px 6px rgba(0, 0, 0, 0.425);
     margin-top: 50px;
@@ -40,7 +48,7 @@ input[type="text"]{
 }
 
 input[type="button"]{
-    background-color: skyblue;
+    background-color: var(--cor2);
     color: white;
     margin-top: 10px;
     font-size: 1.3rem;
@@ -52,6 +60,7 @@ input[type="button"]{
 
 section{
     display: grid;
+
     width: 70%;
     margin: auto;
     margin-top: 40px;
@@ -62,8 +71,14 @@ section{
 
 }
 
+#diaHoje{
+    font-family: 'Bebas Neue';
+    text-shadow: 0px 1px 6px rgba(0, 0, 0, 0.425);
+    color: white;
+    font-size: 5rem;
+}
+
 #previsaoHoje{
-    background-color: white;
     padding: 10px;
     border-radius: 5px;
     width: 100%;
@@ -75,20 +90,24 @@ section{
 .temp{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     margin: auto;
     border-radius: 10px;
     margin-top: 50px;
     padding: 10px;
-    background-color: lightgray;
-    width: 400px;
+    background-color: var(--cor1);
+    width: 60%;
+    height: 250px;
+
 
 }
 
 
+
 #previsaoProximos{
     display: none;
-    background-color: white;
+    flex-direction: row;
+    flex-wrap: wrap;
     padding: 10px;
     border-radius: 5px;
     width: 100%;
@@ -98,17 +117,29 @@ section{
 
 #mostrarMais{
     background-color: white;
+    border-radius: 10px;
     color: black;
     margin-top: 70px;
-    width: 500px;
+    width: 100%;
 }
 
 .proximosDias{
-    background-color: lightgray;
+    background-color: var(--cor1);
     margin: auto;
-    text-align: left;
+    text-align: center;
     border-radius: 10px;
     margin-top: 20px;
     padding: 10px;
     width: 350px;
+    height: 250px;
+}
+
+.margemFilho{
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 900px){
+    .temp{
+        width: 350px;
+    }
 }

@@ -9,8 +9,8 @@ function mostrarEsconder(botao) {
     botao.value = "Mostrar previsão para próximos dias";
     x = 0;
   } else {
-    divAparecer.style.display = "initial";
-    gridTemplate.style.gridTemplate = "auto / 2fr 1fr"
+    divAparecer.style.display = "flex";
+   gridTemplate.style.gridTemplate = "1fr 1fr / 1fr"
     botao.value = "Esconder previsão para próximos dias";
     x = 1;
   }

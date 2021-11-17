@@ -8,7 +8,8 @@ let dataHoje = `${("00" + data.getDate()).slice(-2)}/${
   data.getMonth() + 1
 }/${data.getFullYear()}`;
 
-let dataAmanha = `${("00" + (data.getDate() + 1)).slice(-2)}/${ // Variaveis de obtenção das datas.
+let dataAmanha = `${("00" + (data.getDate() + 1)).slice(-2)}/${
+  // Variaveis de obtenção das datas.
   data.getMonth() + 1
 }/${data.getFullYear()}`;
 let dataProximoDiaUm = `${("00" + (data.getDate() + 2)).slice(-2)}/${
@@ -25,7 +26,7 @@ if (!localStorage.getItem("dia1")) {
   let url = "https://apiprevmet3.inmet.gov.br/previsao/3550308";
   fetch(url)
     .then((res) => {
-      return res.json();  // Caso não tenha item no localStorage, puxa as previsões de São Paulo, e mostra na tela.
+      return res.json(); // Caso não tenha item no localStorage, puxa as previsões de São Paulo, e mostra na tela.
     })
     .then((dados) => {
       let hoje = dados[3550308][dataHoje].manha;
@@ -36,7 +37,6 @@ if (!localStorage.getItem("dia1")) {
 
       let dadosClima = document.getElementsByClassName("dadosClima");
       let dadosProximos = document.getElementsByClassName("dadosProximos");
-      console.log(dadosProximos);
 
       dadosClima[0].innerText = `${hoje.dia_semana} - ${dataHoje}`;
       dadosClima[1].innerText = `${hoje.entidade}`;
@@ -71,7 +71,12 @@ if (!localStorage.getItem("dia1")) {
 }
 
 function pegarCidade() {
-  let nomeCidade = document.getElementById("nomeCidade").value; // Pega o valor do input, nome da cidade.
+  let cidade = document.getElementById("nomeCidade").value.trim(); // Pega o valor do input, nome da cidade.
+
+  let capitalizar = cidade.slice(0, 1);
+  let capitalizando = capitalizar.toUpperCase();
+
+  let nomeCidade = capitalizando + cidade.slice(1, cidade.length); // Capitaliza a primeira letra da cidade.
 
   fetch(url1)
     .then((res) => {
@@ -79,7 +84,7 @@ function pegarCidade() {
     })
     .then((dados) => {
       if (dados.find((city) => city.nome == nomeCidade) == undefined) {
-        alert("Digite corretamente o nome da cidade");  // Faz a requisição das cidades na APi do IBGE e passa o id como parametro.
+        alert("Digite corretamente o nome da cidade"); // Faz a requisição das cidades na APi do IBGE e passa o id como parametro.
         return;
       }
       let cidade = dados.find((city) => city.nome == nomeCidade).id;
@@ -223,7 +228,8 @@ function divProximoTres(diaTres) {
   localStorage.setItem("dia5", JSON.stringify(armazenaDiaTres));
 }
 
-function armazenamento() { // Essa função tem como objetivo solicitar ao localStorage (Caso exista) e colocar as informações na tela.
+function armazenamento() {
+  // Essa função tem como objetivo solicitar ao localStorage (Caso exista) e colocar as informações na tela.
   if (localStorage.getItem("dia1")) {
     let a = JSON.parse(localStorage.getItem("dia1"));
 
@@ -235,7 +241,7 @@ function armazenamento() { // Essa função tem como objetivo solicitar ao local
     dadosClima[1].innerText = `${cidade}`;
     dadosClima[2].innerText = `${resumo}`;
     dadosClima[3].innerText = `Temperatura máxima: ${tempMax}`;
-    dadosClima[4].innerText = `Temperatura mínima: ${tempMin}`; 
+    dadosClima[4].innerText = `Temperatura mínima: ${tempMin}`;
   }
 
   if (localStorage.getItem("dia2")) {

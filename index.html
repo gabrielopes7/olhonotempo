@@ -8,8 +8,8 @@
     <title>Olho no tempo</title>
   </head>
   <body>
-    <h1 class="principal">Olho no tempo</h1>
     <main id="principal">
+      <h1 class="principal">Olho no tempo</h1>
       <input type="text" placeholder="Digite a cidade" id="nomeCidade" />
       <input type="button" value="ENTER" onclick="pegarCidade()" />
     </main>
@@ -17,69 +17,98 @@
       <div id="previsaoHoje">
         <h2 id="diaHoje">Previsão</h2>
         <div class="temp">
-          <h2 class="dadosClima margemFilho">Dia da semana</h2>
-          <h3 class="dadosClima margemFilho">Entidade</h3>
+          <h2 class="dadosClima margemTitulos">Dia da semana</h2>
+          <h3 class="dadosClima margemTitulos">Entidade</h3>
           <p class="dadosClima margemFilho">Resumo</p>
-          <div class="tempMaxMin">
+          <div class="temperatura">
             <p class="dadosClima margemFilho">Temperatura máxima:</p>
-            <img src="image/up-arrow.png" alt="Seta para cima">
+            <img src="image/up-arrow.png" alt="Seta para cima" />
           </div>
-          <div class="tempMaxMin">
+          <div class="temperatura">
             <p class="dadosClima margemFilho">Temperatura mínima:</p>
-            <img src="image/down-arrow.png" alt="Seta para baixo">
+            <img src="image/down-arrow.png" alt="Seta para baixo" />
           </div>
         </div>
         <div class="temp">
-          <h2 class="dadosClima margemFilho">Dia da semana</h2>
-          <h3 class="dadosClima margemFilho">Entidade</h3>
+          <h2 class="dadosClima margemTitulos">Dia da semana</h2>
+          <h3 class="dadosClima margemTitulos">Entidade</h3>
           <p class="dadosClima margemFilho">Resumo</p>
-          <div class="tempMaxMin">
+          <div class="temperatura">
             <p class="dadosClima margemFilho">Temperatura máxima:</p>
-            <img src="image/up-arrow.png" alt="Seta para cima" class="image">
+            <img src="image/up-arrow.png" alt="Seta para cima" class="image" />
           </div>
-          <div class="tempMaxMin">
+          <div class="temperatura">
             <p class="dadosClima margemFilho">Temperatura mínima:</p>
-            <img src="image/down-arrow.png" alt="Seta para baixo" class="image">
+            <img
+              src="image/down-arrow.png"
+              alt="Seta para baixo"
+              class="image"
+            />
           </div>
         </div>
-        <input type="button" value="Mostrar previsão para próximos dias" id="mostrarMais" onclick="mostrarEsconder(this)">
+        <input
+          type="button"
+          value="Mostrar mais"
+          id="mostrarMais"
+          onclick="mostrarEsconder(this)"
+        />
       </div>
       <div id="previsaoProximos">
         <div class="proximosDias">
-          <h2 class="dadosProximos margemFilho">Dia da semana</h2>
-          <h3 class="dadosProximos margemFilho">Entidade</h3>
+          <h2 class="dadosProximos margemTitulos">Dia da semana</h2>
+          <h3 class="dadosProximos margemTitulos">Entidade</h3>
           <p class="dadosProximos margemFilho">Resumo</p>
-          <div>
+          <div class="temperatura">
             <p class="dadosProximos margemFilho">Temperatura máxima:</p>
-            <img src="image/up-arrow.png" alt="Seta para cima" class="image">
-          </div>         
-          <div>
+            <img src="image/up-arrow.png" alt="Seta para cima" class="image" />
+          </div>
+          <div class="temperatura">
             <p class="dadosProximos margemFilho">Temperatura mínima:</p>
-            <img src="image/down-arrow.png" alt="Seta para baixo" class="image">
+            <img
+              src="image/down-arrow.png"
+              alt="Seta para baixo"
+              class="image"
+            />
           </div>
         </div>
         <div class="proximosDias">
-          <h2 class="dadosProximos margemFilho">Dia da semana</h2>
-          <h3 class="dadosProximos margemFilho">Entidade</h3>
+          <h2 class="dadosProximos margemTitulos">Dia da semana</h2>
+          <h3 class="dadosProximos margemTitulos">Entidade</h3>
           <p class="dadosProximos margemFilho">Resumo</p>
-          <p class="dadosProximos margemFilho">Temperatura máxima:</p>
-          <img src="image/up-arrow.png" alt="Seta para cima" class="image">
-          <p class="dadosProximos margemFilho">Temperatura mínima:</p>
-          <img src="image/down-arrow.png" alt="Seta para baixo" class="image">
+          <div class="temperatura">
+            <p class="dadosProximos margemFilho">Temperatura máxima:</p>
+            <img src="image/up-arrow.png" alt="Seta para cima" class="image" />
+          </div>
+          <div class="temperatura">
+            <p class="dadosProximos margemFilho">Temperatura mínima:</p>
+            <img
+              src="image/down-arrow.png"
+              alt="Seta para baixo"
+              class="image"
+            />
+          </div>
         </div>
         <div class="proximosDias">
-          <h2 class="dadosProximos margemFilho">Dia da semana</h2>
-          <h3 class="dadosProximos margemFilho">Entidade</h3>
+          <h2 class="dadosProximos margemTitulos">Dia da semana</h2>
+          <h3 class="dadosProximos margemTitulos">Entidade</h3>
           <p class="dadosProximos margemFilho">Resumo</p>
-          <p class="dadosProximos margemFilho">Temperatura máxima:</p>
-          <img src="image/up-arrow.png" alt="Seta para cima" class="image">
-          <p class="dadosProximos margemFilho">Temperatura mínima:</p>
-          <img src="image/down-arrow.png" alt="Seta para baixo" class="image">
+          <div class="temperatura">
+            <p class="dadosProximos margemFilho">Temperatura máxima:</p>
+            <img src="image/up-arrow.png" alt="Seta para cima" class="image" />
+          </div>
+          <div class="temperatura">
+            <p class="dadosProximos margemFilho">Temperatura mínima:</p>
+            <img
+              src="image/down-arrow.png"
+              alt="Seta para baixo"
+              class="image"
+            />
+          </div>
         </div>
       </div>
     </section>
-    
-    <script src="./script/script2.js"></script>
+
+    <script src="./scripts/script2.js"></script>
     <script src="./scripts/script.js"></script>
   </body>
 </html>

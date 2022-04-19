@@ -4,12 +4,6 @@ let data = new Date();
 
 armazenamento(); // Caso tenha algo no LocalStorage, faz a busca para mostrar na tela.
 
-if((data.getMonth() + 1) < 10){
-  let dia = ("00" + data.getDate()).slice(-2)
-  let mes =  "0" + (data.getMonth() + 1)
-  let ano = data.getFullYear()
-  
-}
 let dataHoje = `${("00" + data.getDate()).slice(-2)}/${
   ("00" + (data.getMonth() + 1)).slice(-2)
 }/${data.getFullYear()}`;

@@ -4,22 +4,28 @@ let data = new Date();
 
 armazenamento(); // Caso tenha algo no LocalStorage, faz a busca para mostrar na tela.
 
+if((data.getMonth() + 1) < 10){
+  let dia = ("00" + data.getDate()).slice(-2)
+  let mes =  "0" + (data.getMonth() + 1)
+  let ano = data.getFullYear()
+  
+}
 let dataHoje = `${("00" + data.getDate()).slice(-2)}/${
-  data.getMonth() + 1
+  ("00" + (data.getMonth() + 1)).slice(-2)
 }/${data.getFullYear()}`;
 
 let dataAmanha = `${("00" + (data.getDate() + 1)).slice(-2)}/${
   // Variaveis de obtenção das datas.
-  data.getMonth() + 1
+  ("00" + (data.getMonth() + 1)).slice(-2)
 }/${data.getFullYear()}`;
 let dataProximoDiaUm = `${("00" + (data.getDate() + 2)).slice(-2)}/${
-  data.getMonth() + 1
+  ("00" + (data.getMonth() + 1)).slice(-2)
 }/${data.getFullYear()}`;
 let dataProximoDiaDois = `${("00" + (data.getDate() + 3)).slice(-2)}/${
-  data.getMonth() + 1
+  ("00" + (data.getMonth() + 1)).slice(-2)
 }/${data.getFullYear()}`;
 let dataProximoDiaTres = `${("00" + (data.getDate() + 4)).slice(-2)}/${
-  data.getMonth() + 1
+  ("00" + (data.getMonth() + 1)).slice(-2)
 }/${data.getFullYear()}`;
 
 if (!localStorage.getItem("dia1")) {
@@ -99,6 +105,7 @@ function cidadePrevisao(cidade) {
       return res.json();
     })
     .then((dados) => {
+      console.log(dados)
       let hoje = dados[cidade][`${dataHoje}`].manha;
       let amanha = dados[cidade][`${dataAmanha}`].manha;
       let proximoDiaUm = dados[cidade][`${dataProximoDiaUm}`];
